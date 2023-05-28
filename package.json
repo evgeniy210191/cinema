@@ -9,10 +9,7 @@
     "build": "parcel build src/*.html --public-url /cinema/",
     "watch": "sass --watch ./src/scss/style.scss ./src/css/style.css"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/evgeniy210191/cinema.git"
-  },
+
   "keywords": [],
   "author": "Sulim Yevgenii <bees127@ukr.net>",
   "license": "ISC",
