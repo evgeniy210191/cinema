@@ -20,6 +20,7 @@ async function showDefaultData() {
   pagination.decriment();
   console.log(result.page);
 }
+
 window.addEventListener('loader', showDefaultData(), { once: true });
 
 async function decrimentPage() {

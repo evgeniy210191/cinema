@@ -1,16 +1,16 @@
 {
-  "name": "project-final-js",
+  "name": "cinema",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://evgeniy210191.github.io/project-final-js/",
+  "homepage": "https://evgeniy210191.github.io/cinema/",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /project-final-js/",
+    "build": "parcel build src/*.html --public-url/cinema/",
     "watch": "sass --watch ./src/scss/style.scss ./src/css/style.css"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evgeniy210191/project-final-js.git"
+    "url": "git+https://github.com/evgeniy210191/cinema.git"
   },
   "keywords": [],
   "author": "Sulim Yevgenii <bees127@ukr.net>",
