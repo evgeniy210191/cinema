@@ -1,3 +1,4 @@
+const core = require('@actions/core');
 import SearchData from './api-js/fethcApi';
 import Pagination from './api-js/pages';
 import GetDefaultData from './api-js/defaltData';
