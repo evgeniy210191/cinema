@@ -2,10 +2,10 @@
   "name": "cinema",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://evgeniy210191.github.io/cinema/",
+  "homepage": "https://evgeniy210191.github.io/cinema",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url/cinema/",
+    "build": "parcel build src/*.html --public-url /cinema/",
     "watch": "sass --watch ./src/scss/style.scss ./src/css/style.css"
   },
   "repository": {
