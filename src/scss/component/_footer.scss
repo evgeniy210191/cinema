@@ -1,0 +1,19 @@
+footer {
+  font-size: 14px;
+  line-height: 1.1;
+  color: $textPsColor;
+  padding: 30px 0;
+  background: #f7f7f7;
+  p:not(:last-child) {
+    padding-bottom: 10px;
+  }
+  svg {
+    vertical-align: middle;
+    margin: 0 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
+}

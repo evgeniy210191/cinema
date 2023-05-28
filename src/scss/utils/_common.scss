@@ -1,0 +1,61 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+html,
+body {
+  scroll-behavior: smooth;
+}
+html {
+  font-size: 16px;
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 32px;
+  }
+}
+body {
+  font-family: $roboto;
+  font-style: normal;
+  font-weight: 500;
+
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: $textLightColor;
+  text-align: center;
+  box-sizing: border-box;
+  &:not(input) {
+    user-select: none;
+  }
+}
+
+.hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.container {
+  margin: 0 auto;
+  font-size: 0rem;
+  position: relative;
+  @media screen and (min-width: 320px) {
+    width: 320px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,74 @@
+.list-films {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr;
+  justify-items: center;
+  row-gap: 20px;
+  padding: 20px 20px 0;
+  @media screen and (min-width: 768px) {
+    grid-template: 1fr / 1fr 1fr 1fr;
+    column-gap: 20px;
+    justify-items: start;
+    padding: 20px 0 0;
+  }
+
+  .films {
+    width: 100%;
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+  h2 {
+    font-size: 0.625rem;
+    line-height: 114%;
+    color: $textDarkColor;
+    padding-top: 10px;
+    @media screen and (min-width: 768px) {
+      padding-top: 0.35rem;
+    }
+  }
+  p {
+    color: $textUnderColor;
+  }
+}
+
+.pagination {
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  .pageList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 40px 0;
+  }
+  button,
+  li {
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+  .prev,
+  .next {
+    background: #f7f7f7;
+  }
+  .page {
+    font-size: 12px;
+    background: transparent;
+    color: $textDarkColor;
+    &.active {
+      background: $buttonHoverColor;
+    }
+    &:hover {
+      background: $buttonHoverColor;
+    }
+  }
+}

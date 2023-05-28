@@ -1,0 +1,142 @@
+.home {
+  font-size: 0;
+}
+.home-container,
+.library-container {
+  height: 230px;
+  padding-top: 42px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @media screen and (min-width: 768px) {
+    height: 216px;
+  }
+}
+
+.home-container {
+  background-image: url('../images/head-home-320.png');
+
+  @media screen and (min-width: 768px) {
+    background-image: url('../images/head-home-768.png');
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: url('../images/head-home-1280.png');
+  }
+}
+
+.library-container {
+  background-image: url('../images/head-library-320.png');
+
+  @media screen and (min-width: 768px) {
+    background-image: url('../images/head-library-768.png');
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: url('../images/head-library-1280.png');
+  }
+}
+.library {
+  display: flex;
+  justify-content: center;
+  margin-top: 62px;
+  font-size: 0.875rem;
+  line-height: 114%;
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+  }
+}
+.library-label {
+  border: solid 1px #ffffff;
+  padding: 14px 36px;
+  border-radius: 5px;
+  position: relative;
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+input[type='radio']:checked + label {
+  background: $buttonHoverColor;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-logo {
+  font-size: 0;
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+    color: $textLightColor;
+    margin-left: 10px;
+  }
+}
+.nav {
+  display: flex;
+}
+.now-here {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: #ff001b;
+  }
+}
+.nav-list {
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+  a {
+    color: $textLightColor;
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+  }
+}
+.search {
+  display: block;
+  margin-top: 56px;
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+  }
+}
+.search-label {
+  position: relative;
+  text-align: center;
+}
+.search-input {
+  font-size: 14px;
+  color: $textLightColor;
+  background: none;
+  border: none;
+  outline: none;
+  width: 280px;
+  margin-bottom: 16px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid $textLightColor;
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    margin-bottom: 20px;
+  }
+}
+.search-svg {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 3px 4px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-80%);
+}
+.search-error {
+  font-size: 0.14px;
+  color: #ff001b;
+  text-align: left;
+  @media screen and (min-width: 768px) {
+    text-align: center;
+  }
+}
