@@ -1,45 +1,37 @@
-const core = require('@actions/core');
 import SearchData from './api-js/fethcApi';
 import Pagination from './api-js/pages';
 import GetDefaultData from './api-js/defaltData';
-const [search, form, paginationList, prev, next] = [
-  '.search-svg',
-  'form',
-  '.pageList',
-  '.prev',
-  '.next',
-].map(item => document.querySelector(item));
+import Card from './api-js/card';
+export default class Films {
+  constructor() {
+    this.result = {};
+    this.components = {};
+    this.page = 1;
+    this.update();
+    this.showDefaultData();
+  }
 
-const getDefaultData = new GetDefaultData();
+  async loadDefaultData() {
+    const getDefaultData = new GetDefaultData(this.page);
+    const result = await getDefaultData.getData();
+    console.log(result);
+    return result;
+  }
+  showDefaultData() {
+    const card = new Card(this.result.results);
+    const pagination = new Pagination(this.result);
+    this.components.card = card;
+    this.components.pagination = pagination;
+  }
 
-async function showDefaultData() {
-  const result = await getDefaultData.getData();
-  const pagination = new Pagination(result);
-  const addPage = pagination.renderPages();
-  paginationList.innerHTML = addPage;
-  console.log(result);
-  pagination.decriment();
-  console.log(result.page);
+  async update() {
+    const data = await this.loadDefaultData();
+    this.components.card.indexHTML = data;
+  }
+  async getData(e) {
+    e.preventDefault();
+    console.dir(e.target.elements.search.value);
+    fetchApi.query = e.target.elements.search.value;
+    console.log(await fetchApi.getData());
+  }
 }
-
-window.addEventListener('loader', showDefaultData(), { once: true });
-
-async function decrimentPage() {
-  pagination.decriment();
-  const result = await getDefaultData.getData();
-  const pagination = new Pagination(result);
-  const addPage = pagination.renderPages();
-  paginationList.insertAdjacentHTML('afterBegin', addPage);
-  console.log(result);
-}
-
-form.addEventListener('submit', getData);
-
-async function getData(e) {
-  e.preventDefault();
-  console.dir(e.target.elements.search.value);
-  fetchApi.query = e.target.elements.search.value;
-  console.log(await fetchApi.getData());
-}
-
-next.addEventListener('click', decrimentPage);

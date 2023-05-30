@@ -3,15 +3,14 @@
   "version": "2.0.0",
   "description": "",
   "homepage": "https://evgeniy210191.github.io/cinema/",
-  "source": "src/index.html",
   "scripts": {
-    "start": "parcel",
+    "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /cinema/",
     "watch": "sass --watch ./src/scss/style.scss ./src/css/style.css"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evgeniy210191/cinema.git"
+    "url": "git+https://github.com/evgeniy210191/cinema"
   },
   "keywords": [],
   "author": "Sulim Yevgenii <bees127@ukr.net>",

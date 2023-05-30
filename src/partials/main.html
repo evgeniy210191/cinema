@@ -1,20 +1,21 @@
 <main>
-  <section>
-
+  <section class="cards">
+    <div class="container">
+      <div class="list-films cards-js"></div>
+    </div>
   </section>
-  <div class="container container-card-js"></div>
   <section>
     <div class="container">
       <div class="pagination">
         <h2 class="hiden">pagination</h2>
-        <button type="button" class="prev">
+        <button type="button" data-element="prev">
           <svg width="16" height="16">
             <use xlink:href="./svg/sprite.svg#arrow-left"></use>
           </svg>
         </button>
-        <ul class="pageList">
+        <ul class="page-list">
         </ul>
-        <button type="button" class="next">
+        <button type="button" data-element="next">
           <svg width="16" height="16">
             <use xlink:href="./svg/sprite.svg#arrow-right"></use>
           </svg>
@@ -22,4 +23,5 @@
       </div>
     </div>
   </section>
+
 </main>

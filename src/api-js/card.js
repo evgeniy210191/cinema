@@ -1,17 +1,28 @@
 export default class Card {
-  constructor(someFilm = {}) {
+  constructor(someFilm = []) {
     this.state = someFilm;
+    this.myRender();
   }
   renderCard() {
-    return `
-        <div class="list-films">
+    return this.state
+      .map(item => {
+        return ` 
           <div class="films">
-            <img src="${this.state.poster_path}" alt="${title}">
-            <h2>${title}<br>
-              <p>| ${this.state.release_date.slice(0, 4)}</p>
+            <img src="https://image.tmdb.org/t/p/w500${
+              item.poster_path
+            }" alt="${item.title}">
+            <h2>${item.title}<br>
+              <p>| ${item.release_date.slice(0, 4)}</p>
             </h2>
           </div>
-        </div>
+        
     `;
+      })
+      .join('');
+  }
+  myRender() {
+    const cards = document.querySelector('.cards-js');
+    const myRender = this.renderCard();
+    return cards.insertAdjacentHTML('beforeEnd', myRender);
   }
 }

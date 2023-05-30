@@ -1,6 +1,6 @@
 export default class DefaultRequest {
-  constructor() {
-    this.page = 1;
+  constructor(page) {
+    this.page = page;
     this.key = 'ef54c316f166b2a5913791e8b3f63a4a';
   }
   async getData() {

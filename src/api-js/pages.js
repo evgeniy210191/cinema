@@ -1,36 +1,83 @@
 export default class Pagination {
-  constructor(totalPages = {}) {
-    this.totalPages = totalPages;
+  constructor({ total_pages = 10, page = 0 } = {}) {
+    this.totalPages = total_pages;
+    this.page = page;
     this.key = 'ef54c316f166b2a5913791e8b3f63a4a';
+    this.renderPages();
+    this.addEventListeners();
   }
 
   quantityPages() {
-    const pages =
-      this.totalPages.total_pages !== 0 ? this.totalPages.total_pages : 0;
-    return pages;
+    const counterPages = this.totalPages !== 0 ? this.totalPages : 0;
+    return counterPages;
   }
-  renderPages() {
+
+  pages(index) {
+    const isActive = this.page === index ? 'active' : '';
+    return `
+      <li class="page ${isActive}" data-page-index="${index}">${index + 1}</li>
+    `;
+  }
+
+  initPages() {
     return new Array(this.quantityPages())
       .fill(0)
       .map((item, index) => {
-        return this.page(index + 1);
+        return this.pages(index);
       })
       .join('');
   }
 
-  page(index) {
-    const isActive = this.totalPages.page === index ? 'page active' : 'page';
+  getTempLate() {
     return `
-      <li class="page ${isActive}">${index}</li>
+      ${this.initPages()}
     `;
   }
-
-  decriment() {
-    if (this.totalPages.page === this.totalPages.total_pages) return;
-    this.totalPages.page += 1;
+  renderPages() {
+    const pagination = document.querySelector('.page-list');
+    pagination.innerHTML = this.getTempLate();
+    this.element = pagination.parentNode;
   }
-  increment() {
-    if (this.totalPages.page === 1) return;
-    this.totalPages.page -= 1;
+  setPage(page = 0) {
+    if (page < 0 || page > this.totalPages - 1) return;
+    const isActive = this.element.querySelector('.page.active');
+    if (isActive) {
+      isActive.classList.remove('active');
+    }
+    const pageItem = this.element.querySelector(`[data-page-index="${page}"]`);
+    pageItem.classList.add('active');
+
+    this.page = page;
+    console.log(page);
+  }
+  nextPage() {
+    this.page += 1;
+    this.setPage(this.page);
+  }
+  prevPage() {
+    this.page -= 1;
+    this.setPage(this.page);
+  }
+
+  addEventListeners() {
+    const [prev, next, list] = [
+      '[data-element="prev"]',
+      '[data-element="next"]',
+      '.page-list',
+    ].map(item => {
+      return this.element.querySelector(item);
+    });
+    prev.addEventListener('click', event => {
+      this.prevPage();
+    });
+    next.addEventListener('click', event => {
+      this.nextPage();
+    });
+    list.addEventListener('click', event => {
+      const pageItem = event.target.closest('.page');
+      if (!pageItem) return;
+      const pageindex = pageItem.dataset.pageIndex;
+      this.setPage(Number(pageindex));
+    });
   }
 }

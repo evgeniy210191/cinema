@@ -334,7 +334,7 @@ input[type=radio]:checked + label {
   display: flex;
   justify-content: center;
 }
-.pagination .pageList {
+.pagination .page-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
