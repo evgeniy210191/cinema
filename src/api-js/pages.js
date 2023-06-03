@@ -1,5 +1,5 @@
 export default class Pagination {
-  constructor({ total_pages = 1000, page = 1, piece = 3 } = {}) {
+  constructor({ total_pages, page = 1, piece = 3 } = {}) {
     this.totalPages = total_pages;
     this.piece = piece;
 
@@ -52,8 +52,8 @@ export default class Pagination {
     }
     const pageItem = this.element.querySelector(`[data-page-index="${page}"]`);
     pageItem.classList.add('active');
+    this.dispatchEvent(page);
     this.page = page;
-    console.log(this.page);
   }
   nextPage() {
     if (this.page > this.totalPages - 1) return;
@@ -88,10 +88,24 @@ export default class Pagination {
     });
     list.addEventListener('click', event => {
       const pageItem = event.target.closest('.page');
+      const pageItemActive = event.target.closest('.page.active');
       if (!pageItem) return;
+      if (pageItemActive) return;
       const pageindex = pageItem.dataset.pageIndex;
       this.setPage(Number(pageindex));
     });
+  }
+
+  dispatchEvent(pageIndex) {
+    const customEvent = new CustomEvent('page-change', {
+      detail: pageIndex,
+    });
+    const header = document.querySelector('header');
+    window.scrollTo({
+      top: header.getBoundingClientRect().height,
+      behavior: 'smooth',
+    });
+    this.element.dispatchEvent(customEvent);
   }
 
   upDataNext() {

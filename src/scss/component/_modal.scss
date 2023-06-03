@@ -1,0 +1,142 @@
+.backdrop {
+  position: fixed;
+  padding: 50px 0 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #00000050;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  overflow-y: auto;
+  transition: opacity 500ms cubic-bezier(0.17, 0.67, 0.92, 0.51);
+  &.is-open {
+    pointer-events: auto;
+    opacity: 1;
+    transition: opacity 500ms cubic-bezier(0.17, 0.67, 0.92, 0.51);
+  }
+}
+
+.top {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.bottom {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.modal {
+  background: #ffffff;
+  position: relative;
+  width: 320px;
+  padding: 48px 20px 40px;
+  border-radius: 5px;
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.card-img {
+  border-radius: 5px;
+  margin: 0 auto;
+  max-width: 280px;
+  height: auto;
+}
+
+.close {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  top: 16px;
+  right: 16px;
+  width: 14px;
+  height: 14px;
+  span {
+    display: block;
+    width: 10px;
+    height: 2px;
+    border-radius: 2px;
+    background: #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 50% 50%;
+  }
+}
+.card-film {
+  color: $textDarkColor;
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.fistful {
+  font-size: 12px;
+  line-height: 1.1;
+  @media screen and (min-width: 768px) {
+    margin-left: 50px;
+  }
+}
+.title-film {
+  font-size: 20px;
+  text-transform: uppercase;
+  padding: 20px 0;
+  text-align: left;
+}
+
+.firste-title {
+  display: flex;
+  justify-content: space-between;
+  color: #8c8c8c;
+  align-items: center;
+  &:not(:last-child) {
+    padding-bottom: 8px;
+  }
+}
+
+.vote {
+  background: $buttonColor;
+  color: $textLightColor;
+  border-radius: 5px;
+  padding: 1px 9px;
+}
+.detail {
+  color: $textDarkColor;
+  font-weight: 500;
+  line-height: 1.8;
+  width: 50%;
+  text-align: left;
+}
+
+.about-film {
+  margin: 20px 0;
+  text-align: left;
+}
+.about-text {
+  margin-top: 8px;
+}
+
+.add-film {
+  display: flex;
+  justify-content: center;
+}
+.add-film button {
+  cursor: pointer;
+  padding: 14px 9px;
+  border-radius: 5px;
+}
+
+.add-wotched {
+  color: $textLightColor;
+  background: $buttonColor;
+  border: none;
+  margin-right: 15px;
+}
+.add-queue {
+  background: transparent;
+}

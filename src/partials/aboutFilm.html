@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <div class="backdrop is-open">
+    <div class="modal">
+      <button tupe="button" class="close">
+        <svg>
+          <img class="close-img" src="../svg/close.svg" alt="">
+        </svg>
+      </button>
+      <div class="card-film">
+        <img class="card-img" src="https://image.tmdb.org/t/p/w500/2I5eBh98Q4aPq8WdQrHdTC8ARhY.jpg" alt="${title}">
+        <div class="fistful">
+          <h2 class="title-film">${title}</h2>
+          <div class="rating">
+            <div class="firste-title">Vote/Votes
+              <p class="detail">
+                <span class="vote">${vote_average}</span> /
+                <span">${vote_count}</span>
+              </p>
+            </div>
+            <p class="firste-title">Popularity<span class="detail">${popularity}</span></p>
+            <p class="firste-title">Original Title<span class="detail">${original_title}</span></p>
+            <p class="firste-title">Genre<span class="detail">${genres()}</span></p>
+          </div>
+          <div class="about-film">
+            <h3>ABOUT</h3>
+            <p class="about-text">
+              ${overview}
+            </p>
+          </div>
+          <div class="add-film">
+            <button type="button" class="add-wotched">add to Watched</button>
+            <button type="button" class="add-queue">add to queue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

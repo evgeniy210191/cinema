@@ -1,10 +1,7 @@
-export default class SearchData {
-  constructor(page) {
-    this.searchData = '';
-    this.page = page;
-    this.key = 'ef54c316f166b2a5913791e8b3f63a4a';
-  }
-  async getData() {
+export default searchData = {
+  searchData: '',
+  key: 'ef54c316f166b2a5913791e8b3f63a4a',
+  async getData(page = 1) {
     const key = 'ef54c316f166b2a5913791e8b3f63a4a';
     const option = {
       headers: {
@@ -14,16 +11,16 @@ export default class SearchData {
       },
     };
 
-    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${this.searchData}&page=${this.page}&include_adult=true`;
+    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${this.searchData}&page=${page}&include_adult=false&append_to_response=videos$confirm=true&language=uk`;
     const response = await fetch(URL, option);
     const data = await response.json();
     return data;
-  }
+  },
 
   get query() {
     return this.searchData;
-  }
+  },
   set query(name) {
     this.searchData = name;
-  }
-}
+  },
+};

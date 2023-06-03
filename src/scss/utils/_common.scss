@@ -26,7 +26,9 @@ body {
     user-select: none;
   }
 }
-
+.is-hidden {
+  overflow: hidden;
+}
 .hidden {
   position: absolute;
   white-space: nowrap;
@@ -56,6 +58,4 @@ body {
 }
 img {
   display: block;
-  width: 100%;
-  height: auto;
 }

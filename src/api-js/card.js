@@ -7,7 +7,7 @@ export default class Card {
     return this.state
       .map(item => {
         return ` 
-          <div class="films">
+          <div class="films" data-atrebut-info="${item.id}">
             <img src="https://image.tmdb.org/t/p/w500${
               item.poster_path
             }" alt="${item.title}">
@@ -23,6 +23,8 @@ export default class Card {
   myRender() {
     const cards = document.querySelector('.cards-js');
     const myRender = this.renderCard();
-    return cards.insertAdjacentHTML('beforeEnd', myRender);
+
+    cards.innerHTML = myRender;
+    this.element = cards;
   }
 }
