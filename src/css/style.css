@@ -188,6 +188,7 @@ img {
   padding: 14px 36px;
   border-radius: 5px;
   position: relative;
+  cursor: pointer;
 }
 .library-label:not(:last-child) {
   margin-right: 16px;
@@ -319,11 +320,10 @@ input[type=radio]:checked + label {
   cursor: pointer;
   width: 100%;
   text-align: left;
-  margin-top: 0.5rem;
 }
 .list-films h2 {
   font-size: 0.625rem;
-  line-height: 114%;
+  line-height: 133%;
   color: #000000;
   padding-top: 10px;
 }
@@ -331,6 +331,9 @@ input[type=radio]:checked + label {
   .list-films h2 {
     padding-top: 0.35rem;
   }
+}
+.list-films .second-title {
+  padding-top: 3px;
 }
 .list-films p {
   color: #ff6b01;
@@ -451,8 +454,7 @@ footer svg {
 
 .card-img {
   border-radius: 5px;
-  margin: 0 auto;
-  max-width: 280px;
+  width: 100%;
   height: auto;
 }
 
@@ -484,19 +486,17 @@ footer svg {
 @media screen and (min-width: 768px) {
   .card-film {
     width: 704px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr;
+    column-gap: 20px;
+    padding: 0 20px;
   }
 }
 
 .fistful {
   font-size: 12px;
   line-height: 1.1;
-}
-@media screen and (min-width: 768px) {
-  .fistful {
-    margin-left: 50px;
-  }
 }
 
 .title-film {
@@ -510,7 +510,8 @@ footer svg {
   display: flex;
   justify-content: space-between;
   color: #8c8c8c;
-  align-items: center;
+  font-weight: 500;
+  line-height: 1.8;
 }
 .firste-title:not(:last-child) {
   padding-bottom: 8px;
@@ -525,8 +526,6 @@ footer svg {
 
 .detail {
   color: #000000;
-  font-weight: 500;
-  line-height: 1.8;
   width: 50%;
   text-align: left;
 }
@@ -549,6 +548,13 @@ footer svg {
   cursor: pointer;
   padding: 14px 9px;
   border-radius: 5px;
+}
+.add-film button:active {
+  transform: scale(0.8);
+}
+.add-film button:disabled {
+  transform: scale(1);
+  background: #f0f0f0;
 }
 
 .add-wotched {

@@ -41,8 +41,7 @@
 }
 .card-img {
   border-radius: 5px;
-  margin: 0 auto;
-  max-width: 280px;
+  width: 100%;
   height: auto;
 }
 
@@ -71,16 +70,16 @@
   color: $textDarkColor;
   @media screen and (min-width: 768px) {
     width: 704px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr;
+    column-gap: 20px;
+    padding: 0 20px;
   }
 }
 .fistful {
   font-size: 12px;
   line-height: 1.1;
-  @media screen and (min-width: 768px) {
-    margin-left: 50px;
-  }
 }
 .title-film {
   font-size: 20px;
@@ -93,7 +92,8 @@
   display: flex;
   justify-content: space-between;
   color: #8c8c8c;
-  align-items: center;
+  font-weight: 500;
+  line-height: 1.8;
   &:not(:last-child) {
     padding-bottom: 8px;
   }
@@ -107,8 +107,6 @@
 }
 .detail {
   color: $textDarkColor;
-  font-weight: 500;
-  line-height: 1.8;
   width: 50%;
   text-align: left;
 }
@@ -129,6 +127,13 @@
   cursor: pointer;
   padding: 14px 9px;
   border-radius: 5px;
+  &:active {
+    transform: scale(0.8);
+  }
+  &:disabled {
+    transform: scale(1);
+    background: #f0f0f0;
+  }
 }
 
 .add-wotched {

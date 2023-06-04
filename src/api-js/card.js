@@ -12,7 +12,7 @@ export default class Card {
               item.poster_path
             }" alt="${item.title}">
             <h2>${item.title}<br>
-              <p>| ${item.release_date.slice(0, 4)}</p>
+              <p class="second-title">| ${item.release_date.slice(0, 4)}</p>
             </h2>
           </div>
         

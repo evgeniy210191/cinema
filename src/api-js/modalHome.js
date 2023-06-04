@@ -3,7 +3,7 @@ export default modal = {
   body: document.querySelector('body'),
 
   eventListeners() {
-    document.addEventListener('click', event => {
+    document.addEventListener('click', async event => {
       if (event.target.closest('.films')) {
         modal.render(event.target.parentNode.dataset.atrebutInfo);
       }
@@ -13,39 +13,38 @@ export default modal = {
           this.body.classList.remove('is-hidden');
         }
       }
+
       if (event.target.id === 'wotched') {
-        const idFilms = localStorage.getItem('idFilmsWotched');
+        const filmInfo = await aboutFilmFetch.getData(event.target.dataset.id);
+        const idFilms = localStorage.getItem('idFilmsWatched');
         if (idFilms) {
           const parsId = JSON.parse(idFilms);
-          parsId.push(event.target.dataset.id);
-          localStorage.setItem('idFilmsWotched', JSON.stringify(parsId));
+          parsId.push(filmInfo);
+          localStorage.setItem('idFilmsWatched', JSON.stringify(parsId));
+
           return;
         }
-        localStorage.setItem(
-          'idFilmsWotched',
-          JSON.stringify([event.target.dataset.id])
-        );
+        localStorage.setItem('idFilmsWatched', JSON.stringify([filmInfo]));
       }
 
       if (event.target.id === 'queue') {
+        const filmInfo = await aboutFilmFetch.getData(event.target.dataset.id);
         const idFilms = localStorage.getItem('idFilmsQueue');
         if (idFilms) {
           const parsId = JSON.parse(idFilms);
-          parsId.push(event.target.dataset.id);
+          parsId.push(filmInfo);
           localStorage.setItem('idFilmsQueue', JSON.stringify(parsId));
+
           return;
         }
-        localStorage.setItem(
-          'idFilmsQueue',
-          JSON.stringify([event.target.dataset.id])
-        );
+        localStorage.setItem('idFilmsQueue', JSON.stringify([filmInfo]));
       }
     });
   },
   async aboutFilm(idS) {
     const filmInfo = await aboutFilmFetch.getData(idS);
     const {
-      backdrop_path,
+      poster_path,
       vote_count,
       vote_average,
       original_title,
@@ -70,7 +69,7 @@ export default modal = {
           <span class="bottom"></span>
       </button>
       <div class="card-film">
-        <img class="card-img" src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt="${original_title}">
+        <img class="card-img" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${original_title}">
         <div class="fistful">
           <h2 class="title-film">${original_title}</h2>
           <div class="rating">

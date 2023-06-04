@@ -2,7 +2,7 @@ import defaultRequest from './api-js/defaltData';
 import searchData from './api-js/fethcApi';
 import Pagination from './api-js/pages';
 import Card from './api-js/card';
-import modal from './api-js/modal';
+import modal from './api-js/modalHome';
 export default class Films {
   constructor() {
     this.components = {};

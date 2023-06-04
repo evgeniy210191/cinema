@@ -18,16 +18,18 @@
     cursor: pointer;
     width: 100%;
     text-align: left;
-    margin-top: 0.5rem;
   }
   h2 {
     font-size: 0.625rem;
-    line-height: 114%;
+    line-height: 133%;
     color: $textDarkColor;
     padding-top: 10px;
     @media screen and (min-width: 768px) {
       padding-top: 0.35rem;
     }
+  }
+  .second-title {
+    padding-top: 3px;
   }
   p {
     color: $textUnderColor;
