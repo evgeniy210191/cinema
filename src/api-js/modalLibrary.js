@@ -18,7 +18,10 @@ export default modalLibrary = {
             }
           });
       }
-      if (event.target.closest('.close') || event.target.closest('.backdrop')) {
+      if (
+        event.target.closest('.close') ||
+        event.target.id === 'backdrop-modals'
+      ) {
         this.removeIsOpen();
       }
 
