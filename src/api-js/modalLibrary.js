@@ -18,21 +18,8 @@ export default modalLibrary = {
             }
           });
       }
-      if (event.target.closest('.close')) {
-        if (this.isOpen.classList.contains('is-open')) {
-          this.isOpen.classList.remove('is-open');
-          this.body.classList.remove('is-hidden');
-        }
-        const inputQueue = document.getElementById('check-queue');
-        if (inputQueue.checked === 'true') {
-          const parsId = JSON.parse(localStorage.getItem('idFilmsQueue'));
-          this.queue(parsId);
-        }
-        const inputWatch = document.getElementById('check-watch');
-        if (inputWatch.checked === 'true') {
-          const parsId = JSON.parse(localStorage.getItem('idFilmsWatched'));
-          this.queue(parsId);
-        }
+      if (event.target.closest('.close') || event.target.closest('.backdrop')) {
+        this.removeIsOpen();
       }
 
       if (event.target.id === 'delete') {
@@ -43,9 +30,19 @@ export default modalLibrary = {
             .slice(0, index)
             .concat(parsId.slice(index + 1, parsId.length));
           localStorage.setItem('idFilmsQueue', JSON.stringify(removedFilm));
+          this.removeIsOpen();
+          console.log(removedFilm);
+          this.queue(removedFilm);
         }
       }
     });
+  },
+
+  removeIsOpen() {
+    if (this.isOpen.classList.contains('is-open')) {
+      this.isOpen.classList.remove('is-open');
+      this.body.classList.remove('is-hidden');
+    }
   },
 
   indexFilm(ids, arr) {
@@ -55,7 +52,7 @@ export default modalLibrary = {
   },
 
   queue(films) {
-    return films
+    listFilm.innerHTML = films
       .map(item => {
         const genres = () => {
           let genresName = [];

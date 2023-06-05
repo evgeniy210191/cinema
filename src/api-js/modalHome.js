@@ -7,7 +7,7 @@ export default modal = {
       if (event.target.closest('.films')) {
         modal.render(event.target.parentNode.dataset.atrebutInfo);
       }
-      if (event.target.closest('.close')) {
+      if (event.target.closest('.close') || event.target.closest('.backdrop')) {
         if (this.isOpen.classList.contains('is-open')) {
           this.isOpen.classList.remove('is-open');
           this.body.classList.remove('is-hidden');
