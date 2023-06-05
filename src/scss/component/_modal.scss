@@ -7,9 +7,6 @@
   top: 0;
   left: 0;
   background: #00000050;
-  justify-content: center;
-  align-items: center;
-  display: flex;
   opacity: 0;
   pointer-events: none;
   overflow-y: auto;
@@ -33,6 +30,7 @@
   width: 320px;
   padding: 48px 20px 40px;
   border-radius: 5px;
+  margin: 0 auto;
   @media screen and (min-width: 768px) {
     width: 704px;
     display: flex;

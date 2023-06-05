@@ -5,7 +5,6 @@ export default class Library {
   listFilmLibrary = document.querySelector('.cards-js');
   constructor() {
     this.eventListeners();
-
     this.pages();
     this.components = {};
   }
@@ -14,6 +13,7 @@ export default class Library {
     if (inputQueue.checked === false) {
       const parsId = JSON.parse(localStorage.getItem('idFilmsWatched'));
       const totalPages = Math.ceil(parsId.length / 10);
+
       const pagination = new Pagination({
         totalPages: totalPages,
         page: 1,

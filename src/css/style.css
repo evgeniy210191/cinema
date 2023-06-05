@@ -415,9 +415,6 @@ footer svg {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.3137254902);
-  justify-content: center;
-  align-items: center;
-  display: flex;
   opacity: 0;
   pointer-events: none;
   overflow-y: auto;
@@ -443,6 +440,7 @@ footer svg {
   width: 320px;
   padding: 48px 20px 40px;
   border-radius: 5px;
+  margin: 0 auto;
 }
 @media screen and (min-width: 768px) {
   .modal {
