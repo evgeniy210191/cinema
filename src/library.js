@@ -1,30 +1,13 @@
 import modalLibrary from './api-js/modalLibrary';
-import Pagination from './api-js/pages';
 
 export default class Library {
   listFilmLibrary = document.querySelector('.cards-js');
+  paginationList = document.querySelector('.pagination');
   constructor() {
+    this.components = {};
     this.eventListeners();
-    // this.pages();
-    // this.components = {};
   }
-  //   pages() {
-  //     const inputQueue = document.getElementById('check-queue');
-  //     if (inputQueue.checked === false) {
-  //       const parsId = JSON.parse(localStorage.getItem('idFilmsWatched'));
-  //       const totalPages = Math.ceil(parsId.length / 10);
-  //
-  //       const pagination = new Pagination({
-  //         totalPages: totalPages,
-  //         page: 1,
-  //         piece: 3,
-  //       });
-  //       this.cpmponents.pagination = pagination;
-  //       console.log(this.cpmponents.pagination);
-  //     } else {
-  //       const parsId = JSON.parse(localStorage.getItem('idFilmsQueue'));
-  //     }
-  //   }
+
   eventListeners() {
     modalLibrary.eventListeners();
     if (localStorage.getItem('idFilmsWatched')) {

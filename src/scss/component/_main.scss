@@ -35,7 +35,9 @@
     color: $textUnderColor;
   }
 }
-
+.pages {
+  margin: 0 auto;
+}
 .pagination {
   padding: 60px 0;
   display: flex;
@@ -62,9 +64,18 @@
       transform: scale(0.9);
     }
   }
-  .prev,
+
+  .prev {
+    background-color: #f7f7f7;
+    background-image: url('../svg/arrow-left.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
   .next {
-    background: #f7f7f7;
+    background-color: #f7f7f7;
+    background-image: url('../svg/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: center;
   }
   .page {
     font-size: 12px;

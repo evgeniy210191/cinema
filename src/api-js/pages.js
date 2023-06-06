@@ -2,10 +2,9 @@ export default class Pagination {
   constructor({ total_pages, page = 1, piece = 3 } = {}) {
     this.totalPages = total_pages;
     this.piece = piece;
-
     this.page = page;
     this.key = 'ef54c316f166b2a5913791e8b3f63a4a';
-    this.renderPages();
+    this.renderPages(1);
     this.addEventListeners();
   }
 
@@ -26,39 +25,48 @@ export default class Pagination {
     `;
   }
 
-  initPages() {
+  initPages(upPage) {
     return new Array(this.quantityPages())
       .fill(0)
       .map((item, index) => {
-        return this.pages(index + 1);
+        return this.pages(index + upPage);
       })
       .join('');
   }
 
-  getTempLate() {
+  getTempLate(upPage) {
     return `
-      ${this.initPages()}
+      <div class="paginationList">
+      <button type="button" data-element="prev" class="prev"></button>
+      <ul class="page-list">
+        ${this.initPages(upPage)}
+      </ul>
+      <button type="button" data-element="next" class="next"></button>
+      </div>
     `;
   }
-  renderPages() {
-    const pagination = document.querySelector('.page-list');
-    pagination.innerHTML = this.getTempLate();
-    this.element = pagination.parentNode;
+  renderPages(upPage) {
+    const pagination = document.createElement('div');
+    pagination.innerHTML = this.getTempLate(upPage);
+    this.element = pagination.firstElementChild;
   }
   setPage(page = 1) {
-    const isActive = this.element.querySelector('.page.active');
+    const isActive = document.querySelector('.page.active');
     if (isActive) {
       isActive.classList.remove('active');
     }
-    const pageItem = this.element.querySelector(`[data-page-index="${page}"]`);
+    const pageItem = document.querySelector(`[data-page-index="${page}"]`);
     pageItem.classList.add('active');
     this.dispatchEvent(page);
     this.page = page;
   }
+  xPage(upPage) {
+    this.renderPages(upPage);
+  }
   nextPage() {
     if (this.page > this.totalPages - 1) return;
-    if (this.page > this.piece - 1) {
-      this.renderUpPagesNext();
+    if (this.page > this.piece - 3) {
+      console.log(this);
     }
     this.page += 1;
     this.setPage(this.page);
@@ -66,7 +74,6 @@ export default class Pagination {
   prevPage() {
     if (this.page === 1) return;
     if (this.page > this.piece - 1) {
-      this.renderUpPagesPrev();
     }
     this.page -= 1;
     this.setPage(this.page);
@@ -105,46 +112,7 @@ export default class Pagination {
       top: header.getBoundingClientRect().height,
       behavior: 'smooth',
     });
+    this.page = customEvent;
     this.element.dispatchEvent(customEvent);
-  }
-
-  upDataNext() {
-    return new Array(this.quantityPages())
-      .fill(0)
-      .map((item, index) => {
-        return this.pages(index + this.page - 1);
-      })
-      .join('');
-  }
-  upListPageNext() {
-    return `
-      ${this.upDataNext()}
-    `;
-  }
-
-  renderUpPagesNext() {
-    const pagination = document.querySelector('.page-list');
-    pagination.innerHTML = this.upListPageNext();
-    this.element = pagination.parentNode;
-  }
-
-  upDataPrev() {
-    return new Array(this.quantityPages())
-      .fill(0)
-      .map((item, index) => {
-        return this.pages(index + this.page - 2);
-      })
-      .join('');
-  }
-  upListPagePrev() {
-    return `
-      ${this.upDataPrev()}
-    `;
-  }
-
-  renderUpPagesPrev() {
-    const pagination = document.querySelector('.page-list');
-    pagination.innerHTML = this.upListPagePrev();
-    this.element = pagination.parentNode;
   }
 }

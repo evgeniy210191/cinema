@@ -21,10 +21,8 @@ export default class Card {
       .join('');
   }
   myRender() {
-    const cards = document.querySelector('.cards-js');
-    const myRender = this.renderCard();
-
-    cards.innerHTML = myRender;
+    const cards = document.createElement('div');
+    cards.innerHTML = this.renderCard();
     this.element = cards;
   }
 }
