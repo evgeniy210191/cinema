@@ -45,11 +45,13 @@ export default class Pagination {
       </div>
     `;
   }
+
   renderPages(upPage) {
     const pagination = document.createElement('div');
     pagination.innerHTML = this.getTempLate(upPage);
     this.element = pagination.firstElementChild;
   }
+
   setPage(page = 1) {
     const isActive = document.querySelector('.page.active');
     if (isActive) {
@@ -59,22 +61,19 @@ export default class Pagination {
     pageItem.classList.add('active');
     this.dispatchEvent(page);
     this.page = page;
+    if (page > 1 && page < this.totalPages) {
+      this.element.innerHTML = this.getTempLate(page - 1);
+    }
   }
-  xPage(upPage) {
-    this.renderPages(upPage);
-  }
+
   nextPage() {
     if (this.page > this.totalPages - 1) return;
-    if (this.page > this.piece - 3) {
-      console.log(this);
-    }
     this.page += 1;
     this.setPage(this.page);
   }
+
   prevPage() {
     if (this.page === 1) return;
-    if (this.page > this.piece - 1) {
-    }
     this.page -= 1;
     this.setPage(this.page);
   }

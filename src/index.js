@@ -7,26 +7,29 @@ export default class Films {
   constructor() {
     this.components = {};
     this.initComponents();
+
     modal.eventListeners();
   }
   async initDefaultFetch(page) {
     const result = await defaultRequest.getData(page);
     const card = new Card(result.results);
-    console.log(result);
     this.components.card = card;
+    const pagination = new Pagination(result);
+    this.components.pagination = pagination;
     this.renderComponentsCard();
+    console.log('here');
+    this.renderComponentsPage();
     this.result = result;
     return result;
   }
   async initComponents() {
+    console.log('sory');
     const result = await this.initDefaultFetch();
-    const pagination = new Pagination(result);
-    this.components.pagination = pagination;
-    this.renderComponentsPage();
     this.eventListeners();
   }
   renderComponentsPage() {
     const pageList = document.querySelector('.pagination');
+    pageList.innerHTML = '';
     pageList.append(...this.components.pagination.element.children);
   }
 
