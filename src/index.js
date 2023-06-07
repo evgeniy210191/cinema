@@ -6,27 +6,50 @@ import modal from './api-js/modalHome';
 export default class Films {
   constructor() {
     this.components = {};
-    this.initComponents();
-
+    this.result = {};
+    this.initComponents(1);
+    this.render();
     modal.eventListeners();
   }
   async initDefaultFetch(page) {
     const result = await defaultRequest.getData(page);
-    const card = new Card(result.results);
-    this.components.card = card;
-    const pagination = new Pagination(result);
-    this.components.pagination = pagination;
-    this.renderComponentsCard();
-    console.log('here');
-    this.renderComponentsPage();
     this.result = result;
     return result;
   }
-  async initComponents() {
-    console.log('sory');
-    const result = await this.initDefaultFetch();
-    this.eventListeners();
+
+  getTemplate() {
+    return `<section class="cards">
+    <div class="container">
+      <div class="list-films cards-js"></div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="pagination">
+        <h2 class="hiden">pagination</h2>
+      </div>
+    </div>
+  </section>`;
   }
+
+  render() {
+    const main = document.querySelector('main');
+    main.innerHTML = this.getTemplate();
+    this.element = main;
+  }
+
+  async initComponents(page) {
+    const resolv = await this.initDefaultFetch(page);
+    const card = new Card(resolv.results);
+    const pagination = new Pagination(resolv);
+
+    this.components.card = card;
+    this.components.pagination = pagination;
+    this.renderComponentsPage();
+    this.renderComponentsCard();
+    this.dispatchEvent();
+  }
+
   renderComponentsPage() {
     const pageList = document.querySelector('.pagination');
     pageList.innerHTML = '';
@@ -39,13 +62,12 @@ export default class Films {
     cardList.append(...this.components.card.element.children);
   }
 
-  eventListeners() {
+  dispatchEvent() {
     this.components.pagination.element.addEventListener(
       'page-change',
       event => {
         const pageIndex = Number(event.detail);
-
-        this.initDefaultFetch(pageIndex);
+        this.initComponents(pageIndex);
       }
     );
   }

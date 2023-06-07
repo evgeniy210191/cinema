@@ -64,6 +64,7 @@ export default class Pagination {
     if (page > 1 && page < this.totalPages) {
       this.element.innerHTML = this.getTempLate(page - 1);
     }
+    console.log(this.element);
   }
 
   nextPage() {
