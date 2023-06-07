@@ -10,7 +10,6 @@ export default class Films {
     this.initComponents(1);
     this.render();
     modal.eventListeners();
-    this.initFetch(1);
   }
 
   //   async initFetch(page) {
@@ -32,6 +31,7 @@ export default class Films {
   async initFetch(page) {
     const result = await defaultRequest.getData(page);
     this.result = result;
+    console.log(result);
     const { total_pages } = result;
     this.totalPages = total_pages;
     return result;
@@ -82,6 +82,7 @@ export default class Films {
     cardList.innerHTML = '';
     cardList.append(...this.components.card.element.children);
   }
+
   upDataPage(pageIndex) {
     const pagination = new Pagination({
       total_pages: this.totalPages,
@@ -93,15 +94,14 @@ export default class Films {
 
     this.renderComponentsPage();
   }
+
   async upData(page) {
     const resolv = await this.initFetch(page);
-    console.log(resolv);
     const card = new Card(resolv.results);
-
     this.components.card = card;
-
     this.renderComponentsCard();
   }
+
   dispatchEvent() {
     this.components.pagination.element.addEventListener(
       'page-change',
