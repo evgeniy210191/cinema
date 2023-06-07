@@ -40,13 +40,14 @@ export default class Films {
 
   async initComponents(page) {
     const resolv = await this.initDefaultFetch(page);
-    const card = new Card(resolv.results);
+    // const card = new Card(resolv.results);
     const pagination = new Pagination(resolv);
 
-    this.components.card = card;
+    // this.components.card = card;
     this.components.pagination = pagination;
+
     this.renderComponentsPage();
-    this.renderComponentsCard();
+    // this.renderComponentsCard();
     this.dispatchEvent();
   }
 
@@ -62,12 +63,27 @@ export default class Films {
     cardList.append(...this.components.card.element.children);
   }
 
+  async upPage(page) {
+    const resolv = await this.initDefaultFetch(page);
+    // const card = new Card(resolv.results);
+    const pagination = new Pagination(resolv);
+
+    // this.components.card = card;
+    this.components.pagination = pagination;
+    this.dispatchEvent();
+    this.renderComponentsPage();
+
+    // this.renderComponentsCard();
+  }
+  event() {
+    console.log('event');
+  }
   dispatchEvent() {
     this.components.pagination.element.addEventListener(
       'page-change',
       event => {
         const pageIndex = Number(event.detail);
-        this.initComponents(pageIndex);
+        this.upPage(pageIndex);
       }
     );
   }

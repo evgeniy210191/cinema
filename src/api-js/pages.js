@@ -4,7 +4,7 @@ export default class Pagination {
     this.piece = piece;
     this.page = page;
     this.key = 'ef54c316f166b2a5913791e8b3f63a4a';
-    this.renderPages(1);
+    this.renderPages(this.page);
     this.addEventListeners();
   }
 
@@ -48,8 +48,14 @@ export default class Pagination {
 
   renderPages(upPage) {
     const pagination = document.createElement('div');
-    pagination.innerHTML = this.getTempLate(upPage);
-    this.element = pagination.firstElementChild;
+    if (upPage > 1 && upPage < this.totalPages) {
+      pagination.innerHTML = this.getTempLate(upPage - 1);
+      this.element = pagination.firstElementChild;
+      return;
+    } else {
+      pagination.innerHTML = this.getTempLate(upPage);
+      this.element = pagination.firstElementChild;
+    }
   }
 
   setPage(page = 1) {
@@ -57,14 +63,11 @@ export default class Pagination {
     if (isActive) {
       isActive.classList.remove('active');
     }
+
     const pageItem = document.querySelector(`[data-page-index="${page}"]`);
     pageItem.classList.add('active');
     this.dispatchEvent(page);
     this.page = page;
-    if (page > 1 && page < this.totalPages) {
-      this.element.innerHTML = this.getTempLate(page - 1);
-    }
-    console.log(this.element);
   }
 
   nextPage() {
