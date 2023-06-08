@@ -149,6 +149,23 @@ html {
   }
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.not_found {
+  color: #ff0000;
+  font-size: 2rem;
+  margin-top: 50px;
+}
+
+main {
+  margin-bottom: auto;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -402,14 +419,14 @@ input[type=radio]:checked + label {
   width: 100%;
   text-align: left;
 }
-.list-films h2 {
+.list-films .title-film {
   font-size: 0.625rem;
   line-height: 133%;
   color: #000000;
   padding-top: 10px;
 }
 @media screen and (min-width: 768px) {
-  .list-films h2 {
+  .list-films .title-film {
     padding-top: 0.35rem;
   }
 }

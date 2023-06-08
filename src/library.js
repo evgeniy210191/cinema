@@ -10,25 +10,40 @@ export default class Library {
 
   eventListeners() {
     modalLibrary.eventListeners();
-    if (localStorage.getItem('idFilmsWatched')) {
+    if (
+      localStorage.getItem('idFilmsWatched') &&
+      JSON.parse(localStorage.getItem('idFilmsWatched')).length !== 0
+    ) {
       const parsId = JSON.parse(localStorage.getItem('idFilmsWatched'));
       this.render(parsId);
+    } else {
+      this.listFilmLibrary.innerHTML = '<h2 class="not_found">Не знайдено</h2>';
     }
     document.addEventListener('click', async event => {
       if (event.target.closest('.watched')) {
-        if (localStorage.getItem('idFilmsWatched')) {
+        if (
+          localStorage.getItem('idFilmsWatched') &&
+          JSON.parse(localStorage.getItem('idFilmsWatched')).length !== 0
+        ) {
           const parsId = JSON.parse(localStorage.getItem('idFilmsWatched'));
+
           this.render(parsId);
         } else {
-          this.listFilmLibrary.innerHTML = '';
+          this.listFilmLibrary.innerHTML =
+            '<h2 class="not_found">Не знайдено</h2>';
         }
       }
       if (event.target.closest('.queue')) {
-        if (localStorage.getItem('idFilmsQueue')) {
+        if (
+          localStorage.getItem('idFilmsQueue') &&
+          JSON.parse(localStorage.getItem('idFilmsQueue')).length !== 0
+        ) {
           const parsId = JSON.parse(localStorage.getItem('idFilmsQueue'));
+          console.dir(parsId.length);
           this.render(parsId);
         } else {
-          this.listFilmLibrary.innerHTML = '';
+          this.listFilmLibrary.innerHTML =
+            '<h2 class="not_found">Не знайдено</h2>';
         }
       }
     });

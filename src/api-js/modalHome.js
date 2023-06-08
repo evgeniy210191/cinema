@@ -64,6 +64,7 @@ export default modal = {
       poster_path,
       vote_count,
       vote_average,
+      title,
       original_title,
       popularity,
       overview,
@@ -87,9 +88,9 @@ export default modal = {
           <span class="bottom"></span>
       </button>
       <div class="card-film">
-        <img class="card-img" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${original_title}">
+        <img class="card-img" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}">
         <div class="fistful">
-          <h2 class="title-film">${original_title}</h2>
+          <h2 class="title-film">${title}</h2>
           <div class="rating">
             <div class="firste-title">Vote/Votes
               <p class="detail">

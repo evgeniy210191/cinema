@@ -11,7 +11,7 @@ export default class Card {
             <img src="https://image.tmdb.org/t/p/w500${
               item.poster_path
             }" alt="${item.title}">
-            <h2>${item.title}<br>
+            <h2 class="title-film">${item.title}<br>
               <p class="second-title">| ${item.release_date.slice(0, 4)}</p>
             </h2>
           </div>

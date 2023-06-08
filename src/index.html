@@ -11,9 +11,11 @@
 </head>
 
 <body>
-  <include src="./partials/header.html"></include>
-  <include src="./partials/main.html"></include>
-  <include src="./partials/footer.html"></include>
+  <div class="wrapper">
+    <include src="./partials/header.html"></include>
+    <include src="./partials/main.html"></include>
+    <include src="./partials/footer.html"></include>
+  </div>
   <script type="module">
     import Film from './index.js';
     const films = new Film()

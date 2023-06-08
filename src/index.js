@@ -52,6 +52,11 @@ export default class Films {
 
   async initComponents(page) {
     const resolv = await this.initFetch(page);
+    if (!resolv.results.length) {
+      const main = document.querySelector('main');
+      main.innerHTML = '<h2 class="not_found">Не знайдено</h2>';
+      return;
+    }
     const card = new Card(resolv.results);
     const pagination = new Pagination(resolv);
 
