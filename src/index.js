@@ -10,23 +10,17 @@ export default class Films {
     this.initComponents(1);
     this.render();
     modal.eventListeners();
+    this.initFetchSubmit(1);
   }
 
-  //   async initFetch(page) {
-  //     const searchForm = document.querySelector('.search');
-  //     searchForm.addEventListener('submit', async event => {
-  //       event.preventDefault();
-  //       searchData.query = event.target.elements.search.value.trim();
-  //       const resolv = await searchData.getData(page);
-  //       console.log(resolv);
-  //       this.resolv = resolv;
-  //       const { total_pages } = resolv;
-  //       this.totalPages = total_pages;
-  //
-  //       this.initComponents(1);
-  //       return resolv;
-  //     });
-  //   }
+  async initFetchSubmit(page) {
+    const searchForm = document.querySelector('.search');
+    searchForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      defaultRequest.query = event.target.elements.search.value.trim();
+      this.initComponents(page);
+    });
+  }
 
   async initFetch(page) {
     const result = await defaultRequest.getData(page);
