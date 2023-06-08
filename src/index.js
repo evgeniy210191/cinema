@@ -1,5 +1,4 @@
 import defaultRequest from './api-js/defaltData';
-import searchData from './api-js/fethcApi';
 import Card from './api-js/card';
 import Pagination from './api-js/pages';
 import modal from './api-js/modalHome';
