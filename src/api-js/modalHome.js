@@ -16,34 +16,48 @@ export default modal = {
           this.body.classList.remove('is-hidden');
         }
       }
-
-      if (event.target.id === 'wotched') {
-        const filmInfo = await aboutFilmFetch.getData(event.target.dataset.id);
-        const idFilms = localStorage.getItem('idFilmsWatched');
-        if (idFilms) {
-          const parsId = JSON.parse(idFilms);
-          parsId.push(filmInfo);
-          localStorage.setItem('idFilmsWatched', JSON.stringify(parsId));
-
-          return;
-        }
-        localStorage.setItem('idFilmsWatched', JSON.stringify([filmInfo]));
-      }
-
-      if (event.target.id === 'queue') {
-        const filmInfo = await aboutFilmFetch.getData(event.target.dataset.id);
-        const idFilms = localStorage.getItem('idFilmsQueue');
-        if (idFilms) {
-          const parsId = JSON.parse(idFilms);
-          parsId.push(filmInfo);
-          localStorage.setItem('idFilmsQueue', JSON.stringify(parsId));
-
-          return;
-        }
-        localStorage.setItem('idFilmsQueue', JSON.stringify([filmInfo]));
-      }
+      this.addLocalStorage();
     });
   },
+
+  async addLocalStorage() {
+    if (event.target.id === 'watched') {
+      const filmInfo = await aboutFilmFetch.getData(event.target.dataset.id);
+      const idFilms = localStorage.getItem('idFilmsWatched');
+      if (idFilms) {
+        const parsId = JSON.parse(idFilms);
+        const similarId = this.similarId(parsId);
+        if (similarId === -1) {
+          parsId.push(filmInfo);
+          localStorage.setItem('idFilmsWatched', JSON.stringify(parsId));
+        }
+        return;
+      }
+      localStorage.setItem('idFilmsWatched', JSON.stringify([filmInfo]));
+    }
+
+    if (event.target.id === 'queue') {
+      const filmInfo = await aboutFilmFetch.getData(event.target.dataset.id);
+      const idFilms = localStorage.getItem('idFilmsQueue');
+      if (idFilms) {
+        const parsId = JSON.parse(idFilms);
+        const similarId = this.similarId(parsId);
+        if (similarId === -1) {
+          parsId.push(filmInfo);
+          localStorage.setItem('idFilmsQueue', JSON.stringify(parsId));
+        }
+        return;
+      }
+      localStorage.setItem('idFilmsQueue', JSON.stringify([filmInfo]));
+    }
+  },
+
+  similarId(arr) {
+    return arr.findIndex(item => {
+      return item.id === this.id;
+    });
+  },
+
   async aboutFilm(idS) {
     const filmInfo = await aboutFilmFetch.getData(idS);
     const {
@@ -56,6 +70,7 @@ export default modal = {
       genres,
       id,
     } = filmInfo;
+    this.id = id;
     const genr = () => {
       let genresName = [];
       for (const genr of genres) {
@@ -93,7 +108,7 @@ export default modal = {
             </p>
           </div>
           <div class="add-film">
-            <button type="button" class="add-wotched" id="wotched" data-id="${id}">add to Watched</button>
+            <button type="button" class="add-watched" id="watched" data-id="${id}">add to Watched</button>
             <button type="button" class="add-queue" id="queue" data-id="${id}">add to queue</button>
           </div>
         </div>

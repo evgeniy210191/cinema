@@ -26,19 +26,23 @@ export default modalLibrary = {
       }
 
       if (event.target.id === 'delete') {
-        if (localStorage.getItem('idFilmsQueue')) {
-          const parsId = JSON.parse(localStorage.getItem('idFilmsQueue'));
-          const index = this.indexFilm(event.target.dataset.id, parsId);
-          const removedFilm = parsId
-            .slice(0, index)
-            .concat(parsId.slice(index + 1, parsId.length));
-          localStorage.setItem('idFilmsQueue', JSON.stringify(removedFilm));
-          this.removeIsOpen();
-          console.log(removedFilm);
-          this.queue(removedFilm);
-        }
+        this.removeLocaleStorage();
       }
     });
+  },
+
+  removeLocaleStorage() {
+    if (localStorage.getItem('idFilmsQueue')) {
+      const parsId = JSON.parse(localStorage.getItem('idFilmsQueue'));
+      const index = this.indexFilm(event.target.dataset.id, parsId);
+      const removedFilm = parsId
+        .slice(0, index)
+        .concat(parsId.slice(index + 1, parsId.length));
+      localStorage.setItem('idFilmsQueue', JSON.stringify(removedFilm));
+      this.removeIsOpen();
+      console.log(removedFilm);
+      this.queue(removedFilm);
+    }
   },
 
   removeIsOpen() {
@@ -82,6 +86,8 @@ export default modalLibrary = {
   },
 
   async aboutFilm(idS) {
+    const wotch = document.querySelector('#watched');
+    console.log(wotch);
     const filmInfo = await aboutFilmFetch.getData(idS);
     const {
       poster_path,
@@ -128,7 +134,7 @@ export default modalLibrary = {
             </p>
           </div>
           <div class="add-film">
-            <button type="button" class="add-wotched" id="delete" disabled="true" data-id="${original_title}">Remote</button>
+            <button type="button" class="add-watched" id="delete" disabled="true" data-id="${original_title}">Remote</button>
           </div>
         </div>
       </div>

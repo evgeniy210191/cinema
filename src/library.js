@@ -36,10 +36,10 @@ export default class Library {
 
   render(films) {
     const pageOfFilms = document.querySelector('.cards-js');
-    pageOfFilms.innerHTML = this.aboutFilm(films);
+    pageOfFilms.innerHTML = this.signboard(films);
   }
 
-  aboutFilm(films) {
+  signboard(films) {
     return films
       .map(item => {
         const genres = () => {
@@ -55,7 +55,7 @@ export default class Library {
               item.poster_path
             }" alt="${item.original_title}">
             <h2>${item.original_title}<br>
-              <p class="second-title">${genres()}| ${item.release_date.slice(
+              <p class="second-title">${genres()} | ${item.release_date.slice(
           0,
           4
         )}</p>
