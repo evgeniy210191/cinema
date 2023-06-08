@@ -24,7 +24,6 @@ export default class Films {
   async initFetch(page) {
     const result = await defaultRequest.getData(page);
     this.result = result;
-    console.log(result);
     const { total_pages } = result;
     this.totalPages = total_pages;
     return result;
