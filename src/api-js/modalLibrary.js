@@ -135,7 +135,7 @@ export default modalLibrary = {
             </p>
           </div>
           <div class="add-film">
-            <button type="button" class="add-watched" id="delete" disabled="true" data-id="${original_title}">Remote</button>
+            <button type="button" class="add-watched" id="delete" disabled="true" data-id="${original_title}">Видалити з черги</button>
           </div>
         </div>
       </div>

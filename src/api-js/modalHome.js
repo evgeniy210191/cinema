@@ -109,8 +109,8 @@ export default modal = {
             </p>
           </div>
           <div class="add-film">
-            <button type="button" class="add-watched" id="watched" data-id="${id}">add to Watched</button>
-            <button type="button" class="add-queue" id="queue" data-id="${id}">add to queue</button>
+            <button type="button" class="add-watched" id="watched" data-id="${id}">додати до переглянутих</button>
+            <button type="button" class="add-queue" id="queue" data-id="${id}">до черги перегляду</button>
           </div>
         </div>
       </div>
