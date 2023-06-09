@@ -511,6 +511,7 @@ footer {
   color: #545454;
   padding: 30px 0;
   background: #f7f7f7;
+  margin-top: 8px;
 }
 footer p:not(:last-child) {
   padding-bottom: 10px;
