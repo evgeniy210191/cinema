@@ -16,15 +16,15 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100%;
+  min-height: 100vh;
 }
 .not_found {
   color: #ff0000;
   font-size: 2rem;
-  margin-top: 50px;
 }
 main {
   margin-bottom: auto;
+  margin-top: 50px;
 }
 body {
   font-family: $roboto;

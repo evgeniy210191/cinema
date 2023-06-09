@@ -1,7 +1,7 @@
 import modalLibrary from './api-js/modalLibrary';
 
 export default class Library {
-  listFilmLibrary = document.querySelector('.cards-js');
+  listFilmLibrary = document.querySelector('.cards');
   paginationList = document.querySelector('.pagination');
   constructor() {
     this.components = {};
