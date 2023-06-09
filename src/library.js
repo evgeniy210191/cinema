@@ -69,7 +69,7 @@ export default class Library {
             <img src="https://image.tmdb.org/t/p/w500${
               item.poster_path
             }" alt="${item.original_title}">
-            <h2>${item.original_title}<br>
+            <h2 class="title-modal">${item.original_title}<br>
               <p class="second-title">${genres()} | ${item.release_date.slice(
           0,
           4
